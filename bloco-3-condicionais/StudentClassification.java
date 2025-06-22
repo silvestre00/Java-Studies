@@ -1,4 +1,4 @@
-public class ClassificacaoAluno{
+public class StudentClassification{
     public static void main(String[] args) {
         int note = 60;
 
