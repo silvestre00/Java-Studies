@@ -1,4 +1,4 @@
-public class MenuSimples{
+public class SimpleMenu{
     public static void main(String[] args){
         int option = 3;
 
