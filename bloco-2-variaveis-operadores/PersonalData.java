@@ -1,4 +1,4 @@
-public class DadosPessoais{
+public class PersonalData{
     public static void main(String[] args){
         String name = "Silvestre";
         int age = 21;
