@@ -1,11 +1,11 @@
-public class AccountBanking {
+public class Account {
     //Attributes
-    private String accountNumber;
+    private final String accountNumber;
     private String cardholderName;
-    private double balance;
+    protected double balance;
 
     //Builder
-    public AccountBanking(String accountNumber, String cardholderName){
+    public Account(String accountNumber, String cardholderName){
         this.accountNumber = accountNumber.trim();
         this.cardholderName = cardholderName.trim();
         this.balance = 0.0;
@@ -36,7 +36,7 @@ public class AccountBanking {
 
     //Methods
     public void deposit(double value){
-        if (value >= 0){
+        if (value > 0){
             balance += value;
             System.out.printf("The deposit in the amount of: R$%.2f was made successfully%n", value);
         }
@@ -45,25 +45,20 @@ public class AccountBanking {
         }
     }
     public void withdrawMoney(double value){
-        if (balance < value){
-            System.out.printf("Withdrawal not completed. %n" +
-                    "No balance available for withdrawal. %n" +
-                    "Current balance: R$%.2f%n", balance);
-        }
-        else if (value < 0) {
-            System.out.println("Withdrawal not completed.%n" +
-                    "It is not possible to withdraw negative amounts. %n" +
-                    "Try again with an amount greater than 0.");
-        }
-        else {
+        if (this.balance > value && value > 0){
             balance -= value;
             System.out.printf("Withdrawal completed.%n" +
                     "Withdrawal amount:%.2f%n" +
                     "Remaining balance:%.2f%n", value, balance);
         }
+        else {
+            System.out.printf("Withdrawal not completed. %n" +
+                    "No balance available for withdrawal. %n" +
+                    "Current balance: R$%.2f%n", balance);
+        }
     }
     public void checkBalance(){
         System.out.printf("The current balance in %s's account" +
-                " is: R$%.2f", cardholderName,balance);
+                " is: R$%.2f%n", cardholderName,balance);
     }
 }
